@@ -1,13 +1,8 @@
-# Dieses Skript optimiert verschiedene Windows-Systemeinstellungen,
-# einschließlich der Deaktivierung von Fastboot, Änderung von Update-Einstellungen,
-# Optimierung der Leistung und mehr. 
-
-
 # Erfordert Administratorrechte
 if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))  
 {  
-  Write-Warning "Bitte führen Sie dieses Skript als Administrator aus!"
-  Break
+    Write-Warning "Bitte führen Sie dieses Skript als Administrator aus!"
+    Break
 }
 
 # Fastboot (Schnellstart) deaktivieren
@@ -28,13 +23,13 @@ Write-Host "Setze Energiesparplan auf Höchstleistung..."
 powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 
 # Visuelle Effekte auf "Beste Leistung" setzen
-# Write-Host "Optimiere visuelle Effekte für beste Leistung..."
-# Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Value 2
+Write-Host "Optimiere visuelle Effekte für beste Leistung..."
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Value 2
 
 # Speicherbereinigung automatisieren
-# Write-Host "Aktiviere automatische Speicherbereinigung..."
-# Enable-ComputerRestore -Drive "C:\"
-# schtasks /Create /TN "AutomaticDiskCleanup" /TR "cleanmgr /sagerun:1" /SC DAILY /ST 02:00
+Write-Host "Aktiviere automatische Speicherbereinigung..."
+Enable-ComputerRestore -Drive "C:\"
+schtasks /Create /TN "AutomaticDiskCleanup" /TR "cleanmgr /sagerun:1" /SC DAILY /ST 02:00
 
 # Deaktiviere unnötige Windows-Features
 Write-Host "Deaktiviere unnötige Windows-Features..."
