@@ -1,9 +1,4 @@
 # Skript ruft alle anderen Skripte auf. (WIP)
 
-# Pfade?!
-
-
 # Richtlinie setzen 
-.\Richtlinie.ps1
-
-# 
+.\Richtlinie.ps1 
