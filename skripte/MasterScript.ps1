@@ -1,11 +1,9 @@
-# Skript ruft alle anderen Skripte auf. (WIP)
-
 # Master-Skript für Windows-Einrichtung
 
 # Funktion zum Setzen der Ausführungsrichtlinie
 function Set-ExecutionPolicyForSetup {
     try {
-        Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force -ErrorAction Stop
+        Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
         Write-Host "Ausführungsrichtlinie erfolgreich auf RemoteSigned gesetzt."
     }
     catch {
@@ -20,14 +18,15 @@ function Invoke-SetupScript {
         [string]$ScriptPath
     )
     try {
-        if (Test-Path $ScriptPath) {
-            & $ScriptPath
+        if (Test-Path -Path $ScriptPath) {
+            # Verwenden von Dot-Sourcing mit geschweiften Klammern
+            . "${ScriptPath}"
         } else {
-            Write-Warning "Skript nicht gefunden: $ScriptPath"
+            Write-Warning "Skript nicht gefunden: ${ScriptPath}"
         }
     }
     catch {
-        Write-Error "Fehler beim Ausführen von $ScriptPath: $_"
+        Write-Error "Fehler beim Ausführen von ${ScriptPath}: $_"
     }
 }
 
@@ -38,14 +37,14 @@ function Start-CompleteSetup {
 
     # Liste aller Setup-Skripte
     $setupScripts = @(
-        ".\Fastboot.ps1",
-        ".\InstallApps.ps"
+        "${PSScriptRoot}\Fastboot.ps1",
+        "${PSScriptRoot}\InstallApps.ps1"
         # Fügen Sie hier weitere Skripte hinzu
     )
 
     # Führe jedes Skript aus
     foreach ($script in $setupScripts) {
-        Write-Host "Führe aus: $script"
+        Write-Host "Führe aus: ${script}"
         Invoke-SetupScript -ScriptPath $script
     }
 
