@@ -38,7 +38,8 @@ function Start-CompleteSetup {
     # Liste aller Setup-Skripte
     $setupScripts = @(
         "${PSScriptRoot}\Fastboot.ps1",
-        "${PSScriptRoot}\InstallApps.ps1"
+        "${PSScriptRoot}\InstallApps.ps1",
+        "${PSScriptRoot}\nichtsunternehmen.ps1"
         # Fügen Sie hier weitere Skripte hinzu
     )
 
