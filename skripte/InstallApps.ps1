@@ -1,6 +1,6 @@
 # Installiert Standardanwendungen
 
-$apps = @("Google.Chrome", "Adobe.Reader", "Mozilla.Firefox", "7zip.7zip")
+$apps = @("Google.Chrome", "Adobe.Acrobat.Reader.64-bit", "Mozilla.Firefox", "7zip.7zip")
 
 foreach ($app in $apps) {
     Write-Host "Installiere $app..."
