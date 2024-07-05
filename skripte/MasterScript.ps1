@@ -4,7 +4,7 @@
 function Set-ExecutionPolicyForSetup {
     try {
         Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
-        Write-Host "Ausführungsrichtlinie erfolgreich auf RemoteSigned gesetzt."
+        Write-Host "Ausführungsrichtlinie erfolgreich auf Unrestricted gesetzt."
     }
     catch {
         Write-Error "Fehler beim Setzen der Ausführungsrichtlinie: $_"
