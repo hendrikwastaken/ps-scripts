@@ -1,4 +1,4 @@
-# Master-Skript für Windows-Einrichtung
+# Master-Skript für Windows-Einrichtung (WIP)
 
 # Funktion zum Setzen der Ausführungsrichtlinie
 function Set-ExecutionPolicyForSetup {
